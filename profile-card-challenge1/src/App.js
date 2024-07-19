@@ -1,5 +1,38 @@
 import "./styles.css";
 
+const skills = [
+  {
+    skill: "HTML+CSS",
+    level: "advanced",
+    color: "#2662EA",
+  },
+  {
+    skill: "JavaScript",
+    level: "advanced",
+    color: "#EFD81D",
+  },
+  {
+    skill: "Web Design",
+    level: "advanced",
+    color: "#C3DCAF",
+  },
+  {
+    skill: "Git and GitHub",
+    level: "intermediate",
+    color: "#E84F33",
+  },
+  {
+    skill: "React",
+    level: "advanced",
+    color: "#60DAFB",
+  },
+  {
+    skill: "Svelte",
+    level: "beginner",
+    color: "#FF3B00",
+  },
+];
+
 function App() {
   return (
     <div className="App, card">
@@ -34,10 +67,20 @@ function Intro() {
 function SkillList() {
   return (
     <div className="skill-list">
-      <Skill skillDesc="C++" emoji="💪" backColor="blue" />
-      <Skill skillDesc="Javascript" emoji="💪" backColor="orange" />
-      <Skill skillDesc="C#" emoji="💪" backColor="yellow" />
-      <Skill skillDesc=".Net Core" emoji="👶" backColor="red" />
+      {skills.map((skill) => {
+        var em = "";
+        if (skill.level == "advanced") {
+          em = "💪";
+        } else if (skill.level == "intermediate") {
+          em = "👍";
+        } else {
+          em = "👶";
+        }
+
+        return (
+          <Skill skillDesc={skill.skill} emoji={em} backColor={skill.color} />
+        );
+      })}
     </div>
   );
 }
